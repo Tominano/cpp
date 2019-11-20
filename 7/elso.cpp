@@ -20,7 +20,7 @@ vector<int>::const_iterator contains(const vector<int>& v, int x){ //megkérem a
                                 // mindent lehet vele csinálni amit egy pointerrel
         if(*i ==x)
             return i;
-        return v.end();
+    return v.end();
 }
 // ha más adatszerkezeten akarok keresni akkor a vector helyett cska mást kell beírni pl: list....
 //begin()end() bal zárt, jobb nyilt intervallum
