@@ -21,7 +21,6 @@ Legmagasabb hegycsúcs helye: 4*/
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <fstream>
 
 using namespace std;
@@ -57,10 +56,22 @@ int MaxShallow(const vector<int>& data){
         }
     }   else 
         {
-            cout << "The number of the shallows is: ";
-            return 0;            
+            cout << "Dont have any shallow, the lowest point is: ";
+            return MinPoint(data);            
         }  
+}
 
+int LongPlain(const vector<int>& data){
+    if(MaxPoint(data) > 0){
+        int plainLength = 0;
+        for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
+        {
+            if(*i == *next(i))
+                ++plainLength;
+            
+            return plainLength;
+       }
+    }
 }
 
 int main(){
@@ -77,11 +88,11 @@ int main(){
     for(int i = 0; i < data.size(); i++)
         cout << data[i] << ", ";
     cout << endl;
-
+    
 
     cout << "The highest point is: " << MaxPoint(data) << endl;
     cout << "The highest shallow is: "<< MaxShallow(data) << endl;
-    cout << "The lowest point is: "<< MinPoint(data) << endl;
+    cout << "The longest plain is: "<< LongPlain(data) << endl;
 
 
 return 0;
