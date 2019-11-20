@@ -19,9 +19,7 @@ Leghosszabb emelkedő: 3
 Legmagasabb hegycsúcs helye: 4*/
 
 #include <iostream>
-#include <algorithm>
 #include <vector>
-#include <iterator>
 #include <fstream>
 
 
