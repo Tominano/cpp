@@ -18,82 +18,127 @@ Leghosszabb síkság: 2
 Leghosszabb emelkedő: 3
 Legmagasabb hegycsúcs helye: 4*/
 
-
 #include <iostream>
+#include <algorithm>
 #include <vector>
+#include <iterator>
 #include <fstream>
+
 
 using namespace std;
 
-int MaxPoint(const vector<int>& data){
+int MaxPoint(const vector<int> &data)
+{
     int max_peek = data[0];
-    for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
+    for (vector<int>::const_iterator i = data.begin(); i != data.end(); ++i)
     {
-        if(max_peek < *i)
+        if (max_peek < *i)
             max_peek = *i;
     }
-return max_peek;
+    return max_peek;
 }
 
-int MinPoint(const vector<int>& data){
+int MinPoint(const vector<int> &data)
+{
     int min = data[0];
-    for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
+    for (vector<int>::const_iterator i = data.begin(); i != data.end(); ++i)
     {
-        if(min > *i)
+        if (min > *i)
             min = *i;
     }
-return min;
+    return min;
 }
 
-int MaxShallow(const vector<int>& data){
-    if(MinPoint(data) < 0){
+int MaxShallow(const vector<int> &data)
+{
+    if (MinPoint(data) < 0)
+    {
         int max_shall = -1;
-        for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
-        {             
-            if(max_shall > *i)
+        for (vector<int>::const_iterator i = data.begin(); i != data.end(); ++i)
+        {
+            if (max_shall > *i)
                 max_shall = *i;
-            return max_shall; 
+            return max_shall;
         }
-    }   else 
-        {
-            cout << "Dont have any shallow, the lowest point is: ";
-            return MinPoint(data);            
-        }  
-}
-
-int LongPlain(const vector<int>& data){
-    if(MaxPoint(data) > 0){
-        int plainLength = 0;
-        for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
-        {
-            if(*i == *next(i))
-                ++plainLength;
-            
-            return plainLength;
-       }
+    }
+    else
+    {
+        cout << "Dont have any shallow, the lowest point is: ";
+        return MinPoint(data);
     }
 }
 
-int main(){
+int LongPlain(const vector<int> &data)
+{
+    if (MaxPoint(data) > 0)
+    {
+        int plainLength = 0;
+        for (vector<int>::const_iterator i = data.begin(); i != data.end(); ++i)
+        {
+            if (*i == *next(i))
+            {
+                ++plainLength;
+            }
+        }
+        return plainLength;
+    }
+}
+
+int LongUp(const vector<int>& data)
+{
+    int uplength_one = 0, uplength_two = 0;
+    for (vector<int>::const_iterator i = data.begin(); i!= data.end(); ++i)
+    {
+        if(*i < *next(i))
+            ++uplength_one;
+        
+        else
+        {
+            if (uplength_two < uplength_one)
+                uplength_two = uplength_one;
+            uplength_one = 0;
+        }
+    }
+    //if (uplength_two == uplength_one and uplength_one != 0)
+    //    uplength_two = uplength_one;
+
+
+    return uplength_two;
+}
+
+int WhereMaxPoint(const vector<int>& data)
+{
+    int where_max_peek = 0;
+    
+    for (vector<int>::const_iterator i = data.begin()+1; i!= data.end()-1; ++i)
+    {
+        if(*prev(i) < *i and *i > *next(i))
+            where_max_peek = i - data.begin();
+
+    }
+
+    return where_max_peek;
+}
+
+
+int main()
+{
 
     ifstream file("szintek.dat");
     int input;
     vector<int> data;
 
-    while(file>>input)
+    while (file >> input)
         data.push_back(input);
     file.close();
 
-
-    for(int i = 0; i < data.size(); i++)
+    for (int i = 0; i < data.size(); i++)
         cout << data[i] << ", ";
     cout << endl;
-    
 
     cout << "The highest point is: " << MaxPoint(data) << endl;
     cout << "The highest shallow is: "<< MaxShallow(data) << endl;
     cout << "The longest plain is: "<< LongPlain(data) << endl;
-
-
-return 0;
+    cout << "The longest uphill is: "<< LongUp(data) << endl;
+    cout << "The highest point is at the: " << WhereMaxPoint(data) << ". km"<< endl;
 }
