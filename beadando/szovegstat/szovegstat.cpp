@@ -24,19 +24,32 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
 using namespace std;
 
 class TextStat{
-    public:
-    
-    private:
-    
+};
+
     void add(string){
     }
 
-    void size(){
-
+    void size(const vector<string> data)
+    {
+        int max = 0;
+        for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
+            {
+            if (max < i - data.begin())
+                max = i - data.begin() +1 ; //mivel a 0-tól megy azt nem adta hozzá
+            }
+        cout << max << endl;
+        cout << data.size() << endl; //a beépítettel ellenörzöm
     }
-    void print(){
 
+    void print(const vector<string>& data)
+    {
+        for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
+        {
+            cout << *i << ", " ;
+        }
+        cout << endl;
     }
+
     void getLongest(){
 
     }
@@ -53,20 +66,18 @@ class TextStat{
 
     }
 
-
-};
-
 main(){
     
+    TextStat stat;
+
     ifstream file("szovegstat.cpp");
     string input;
     vector<string> data;
+    
     while (file >> input)
         data.push_back(input);
     file.close();
-/*
-    for (int i = 0; i < data.size(); i++)
-        cout << data[i] << ", ";
-    cout << endl;
-*/
+
+    size(data);
+    print(data);
 }
