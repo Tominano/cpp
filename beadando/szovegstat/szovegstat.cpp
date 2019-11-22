@@ -24,12 +24,16 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
 using namespace std;
 
 class TextStat{
+    public:
+    vector<string> data;
+    string input;
 };
 
-    void add(string){
+    void add(string)
+    {
     }
 
-    void size(const vector<string> data)
+    int size(const vector<string>& data)
     {
         int max = 0;
         for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
@@ -37,7 +41,7 @@ class TextStat{
             if (max < i - data.begin())
                 max = i - data.begin() +1 ; //mivel a 0-tól megy azt nem adta hozzá
             }
-        cout << max << endl;
+        return max;
         cout << data.size() << endl; //a beépítettel ellenörzöm
     }
 
@@ -50,15 +54,40 @@ class TextStat{
         cout << endl;
     }
 
-    void getLongest(){
-
+    int getLongest(const vector<string>& data)
+    {   
+        int longest = 0;for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
+        for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
+        {
+            if (longest < i->length())
+                longest = i->length();
+        }
+        return longest;
     }
-    void getShortest(){
 
+    int getShortest(const vector<string>& data)
+    {
+        int shortest = getLongest(data);
+        for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
+        {
+            if (shortest > i->length())
+                shortest = i->length();
+        }
+        return shortest;
     }
-    void longerThan(int){
 
+    void longerThan(const vector<string>& data){
+        int size;
+        cout << "Longer than: ";
+        cin >> size;
+        for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
+        {
+            if (size < i->length())
+                cout << *i << ", ";
+        }  
+        cout << endl;
     }
+
     void numUnique(){
 
     }
@@ -71,13 +100,15 @@ main(){
     TextStat stat;
 
     ifstream file("szovegstat.cpp");
-    string input;
-    vector<string> data;
+
     
-    while (file >> input)
-        data.push_back(input);
+    while (file >> stat.input)
+        stat.data.push_back(stat.input);
     file.close();
 
-    size(data);
-    print(data);
+    cout << getShortest(stat.data) << endl;
+    cout << getLongest(stat.data) << endl;
+    cout << size(stat.data) << endl;
+    longerThan(stat.data);
+   // print(stat.data);
 }
