@@ -18,8 +18,8 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
 
 #include <iostream>
 #include <vector>
-#include <random>
-#include <ctime>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -57,5 +57,16 @@ class TextStat{
 };
 
 main(){
-
+    
+    ifstream file("szovegstat.cpp");
+    string input;
+    vector<string> data;
+    while (file >> input)
+        data.push_back(input);
+    file.close();
+/*
+    for (int i = 0; i < data.size(); i++)
+        cout << data[i] << ", ";
+    cout << endl;
+*/
 }
