@@ -15,3 +15,47 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
             Például: alma, korte, alma, narancs, narancs, alma -> alma.
 - Olvass be néhány szót a standard bemenetről vagy fájlból, és helyezd el egy TextStat objektumban.
             Hívd meg a fenti függvényeket a teszteléshez.*/
+
+#include <iostream>
+#include <vector>
+#include <random>
+#include <ctime>
+
+using namespace std;
+
+class TextStat{
+    public:
+    
+    private:
+    
+    void add(string){
+    }
+
+    void size(){
+
+    }
+    void print(){
+
+    }
+    void getLongest(){
+
+    }
+    void getShortest(){
+
+    }
+    void longerThan(int){
+
+    }
+    void numUnique(){
+
+    }
+    void mostFrequent(){
+
+    }
+
+
+};
+
+main(){
+
+}
