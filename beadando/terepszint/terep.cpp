@@ -134,9 +134,9 @@ int main()
         cout << data[i] << ", ";
     cout << endl;
 
-    cout << "The highest point is: " << MaxPoint(data) << endl;
-    cout << "The highest shallow is: "<< MaxShallow(data) << endl;
-    cout << "The longest plain is: "<< LongPlain(data) << endl;
-    cout << "The longest uphill is: "<< LongUp(data) << endl;
-    cout << "The highest point is at the: " << WhereMaxPoint(data) << ". km"<< endl;
+    cout << "The highest point is: " << MaxPoint(data) << " km high." << endl;
+    cout << "The highest shallow is: "<< MaxShallow(data) << " km high." << endl;
+    cout << "The longest plain is: "<< LongPlain(data) << " km long." << endl;
+    cout << "The longest uphill is: "<< LongUp(data) << " km long." << endl;
+    cout << "The highest point is at the: " << WhereMaxPoint(data) << ". km."<< endl;
 }
