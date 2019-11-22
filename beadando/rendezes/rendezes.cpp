@@ -1,7 +1,6 @@
 /*Készíts egy tömböt, amit feltöltesz véletlenszerű értékekkel.
 Rendezd a tömb elemeit növekvő számsorrendbe.*/
 
-#include <cstdlib>  
 #include <iostream>
 #include <vector>
 #include <random>
