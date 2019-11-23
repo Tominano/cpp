@@ -29,8 +29,16 @@ class TextStat{
     string input;
 };
 
-    void add(string)
-    {
+    void add(vector<string> data)
+    {   string word;
+        cout << "Write the word(s) what you want to add: ";
+        cin >> word;
+        data.push_back(word);
+        for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
+            {
+                cout << *i << ", ";
+            }
+        cout << endl;
     }
 
     int size(const vector<string>& data)
@@ -91,24 +99,35 @@ class TextStat{
     void numUnique(){
 
     }
-    void mostFrequent(){
-
+    void mostFrequent(const vector<string>& data){
+        int most = 0;
+        for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
+            {
+                for (vector<string>::const_iterator j = data.begin(); j != data.end(); ++j)
+                {
+                    if(operator==(*i,*j))
+                        ++most;
+                }
+            }
+        cout << most << endl;
     }
 
 main(){
     
     TextStat stat;
 
-    ifstream file("szovegstat.cpp");
+    ifstream file("proba2.dat");
 
     
     while (file >> stat.input)
         stat.data.push_back(stat.input);
     file.close();
 
-    cout << getShortest(stat.data) << endl;
-    cout << getLongest(stat.data) << endl;
-    cout << size(stat.data) << endl;
-    longerThan(stat.data);
-   // print(stat.data);
+    //cout << getShortest(stat.data) << endl;
+    //cout << getLongest(stat.data) << endl;
+    //cout << size(stat.data) << endl;
+    //longerThan(stat.data);
+    //add(stat.data);
+    //print(stat.data);
+    mostFrequent(stat.data);
 }
