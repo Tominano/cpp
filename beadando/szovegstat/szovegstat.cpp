@@ -101,22 +101,26 @@ class TextStat{
     }
     void mostFrequent(const vector<string>& data){
         vector<int> most;
-        int int_most = -1;
+        int int_most = 0, int_most2 = 0, max_element = 0;
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
             {
                 for (vector<string>::const_iterator j = data.begin(); j != data.end(); ++j)
                 {
                     if(operator==(*i,*j))
-                    {
                         ++int_most;
-                    }
                 }
-                most.push_back(int_most);
+            most.push_back(int_most);
+            
+            if (i - data.end() == most.size())
+                int_most = int_most2;
+            int_most = 0;
             }
         for (vector<int>::const_iterator j = most.begin(); j != most.end(); ++j)
         {
-            cout << *j;
+            if (max_element < *j)
+                max_element = j - most.begin();
         }
+        cout << data[max_element] << endl; 
 
     }
 
@@ -124,7 +128,7 @@ main(){
     
     TextStat stat;
 
-    ifstream file("probe2.dat");
+    ifstream file("proba2.dat");
 
     
     while (file >> stat.input)
