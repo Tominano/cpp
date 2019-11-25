@@ -20,6 +20,8 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -100,7 +102,7 @@ class TextStat{
 
     }
     void mostFrequent(const vector<string>& data){
-        vector<int> most;
+        vector<int> most; vector<string> done;
         int int_most = 0, int_most2 = 0, max_element = 0;
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
             {
@@ -115,14 +117,33 @@ class TextStat{
                 int_most = int_most2;
             int_most = 0;
             }
+
         for (vector<int>::const_iterator j = most.begin(); j != most.end(); ++j)
         {
             if (max_element < *j)
-                max_element = j - most.begin();
+                max_element = *j;
+        }   
+        
+        for (vector<int>::const_iterator k = most.begin(); k != most.end(); ++k)
+        { 
+            if (max_element == *k)
+            {
+              done.push_back(data[k - most.begin()]);
+            }
         }
-        cout << data[max_element] << endl; 
 
+        sort(done.begin(), done.end());
+        done.erase(unique(done.begin(), done.end()), done.end());
+        cout << "The most frequent world(s): ";
+        for (vector<string>::const_iterator k = done.begin(); k != done.end(); ++k)
+        {
+            cout << *k << ", ";
+        }
+        cout << endl;
     }
+    
+      
+
 
 main(){
     
