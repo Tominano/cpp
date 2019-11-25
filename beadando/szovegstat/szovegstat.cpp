@@ -31,7 +31,7 @@ class TextStat{
     string input;
 };
 
-    void add(vector<string> data)
+    void add(vector<string>& data)
     {   string word;
         cout << "Write the word(s) what you want to add: ";
         cin >> word;
@@ -88,18 +88,41 @@ class TextStat{
 
     void longerThan(const vector<string>& data){
         int size;
+         vector<string> longer;
         cout << "Longer than: ";
         cin >> size;
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
         {
             if (size < i->length())
-                cout << *i << ", ";
-        }  
+                longer.push_back(*i);
+        }
+        sort(longer.begin(), longer.end());
+        longer.erase(unique(longer.begin(), longer.end()), longer.end());
+        cout << "These are longer than " << size << ": ";
+        
+        for (vector<string>::const_iterator k = longer.begin(); k != longer.end(); ++k)
+        {
+            cout << *k << ", ";
+        }
         cout << endl;
     }
 
-    void numUnique(){
 
+
+
+
+
+
+    void numUnique(const vector<string>& data)
+    {   
+        vector<string> unic_one;
+        for (vector<string>::const_iterator k = data.begin(); k != data.end(); ++k)
+        {
+            unic_one.push_back(*k);
+        }
+        sort(unic_one.begin(), unic_one.end());
+        unic_one.erase(unique(unic_one.begin(), unic_one.end()), unic_one.end());
+        cout << "Unique number of words in the file : " << unic_one.size()<< endl;
     }
     void mostFrequent(const vector<string>& data){
         vector<int> most; vector<string> done;
@@ -156,11 +179,13 @@ main(){
         stat.data.push_back(stat.input);
     file.close();
 
-    //cout << getShortest(stat.data) << endl;
-    //cout << getLongest(stat.data) << endl;
-    //cout << size(stat.data) << endl;
-    //longerThan(stat.data);
-    //add(stat.data);
-    //print(stat.data);
+
+    cout << "The shortest word in the file is: " << getShortest(stat.data) << " character short." << endl;
+    cout << "The longest worls in the file is: " << getLongest(stat.data) << " character long" << endl;
+    cout <<  "The sum of the file's words is: " << size(stat.data) << endl;
+    longerThan(stat.data);
+    add(stat.data);
+    print(stat.data);
     mostFrequent(stat.data);
+    numUnique(stat.data);
 }
