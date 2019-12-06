@@ -25,11 +25,11 @@ Az osztály az alábbi tagfüggvényekkel rendelkezik:
 
 using namespace std;
 
-class TextStat{
-    public:
+class TextStat
+{
+  public:
     vector<string> data;
     string input;
-};
 
     void add(vector<string>& data)
     {   string word;
@@ -107,12 +107,6 @@ class TextStat{
         cout << endl;
     }
 
-
-
-
-
-
-
     void numUnique(const vector<string>& data)
     {   
         vector<string> unic_one;
@@ -166,26 +160,24 @@ class TextStat{
     }
     
       
-
+  };
 
 main(){
     
     TextStat stat;
-
     ifstream file("proba2.dat");
 
-    
     while (file >> stat.input)
         stat.data.push_back(stat.input);
     file.close();
 
 
-    cout << "The shortest word in the file is: " << getShortest(stat.data) << " character short." << endl;
-    cout << "The longest worls in the file is: " << getLongest(stat.data) << " character long" << endl;
-    cout <<  "The sum of the file's words is: " << size(stat.data) << endl;
-    longerThan(stat.data);
-    add(stat.data);
-    print(stat.data);
-    mostFrequent(stat.data);
-    numUnique(stat.data);
+    cout << "The shortest word in the file is: " << stat.getShortest(stat.data) << " character short." << endl;
+    cout << "The longest worls in the file is: " << stat.getLongest(stat.data) << " character long" << endl;
+    cout <<  "The sum of the file's words is: " << stat.size(stat.data) << endl;
+    stat.longerThan(stat.data);
+    stat.add(stat.data);
+    stat.print(stat.data);
+    stat.mostFrequent(stat.data);
+    stat.numUnique(stat.data);
 }
