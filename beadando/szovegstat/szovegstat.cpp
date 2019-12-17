@@ -31,7 +31,7 @@ class TextStat
     vector<string> data;
     string input;
 
-    void add(vector<string>& data)
+    void add()
     {   string word;
         cout << "Write the word(s) what you want to add: ";
         cin >> word;
@@ -43,7 +43,7 @@ class TextStat
         cout << endl;
     }
 
-    int size(const vector<string>& data)
+    int size()
     {
         int max = 0;
         for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
@@ -55,7 +55,7 @@ class TextStat
         cout << data.size() << endl; //a beépítettel ellenörzöm
     }
 
-    void print(const vector<string>& data)
+    void print()
     {
         for (vector<string>::const_iterator i = data.begin()+1; i!= data.end(); ++i)
         {
@@ -64,7 +64,7 @@ class TextStat
         cout << endl;
     }
 
-    int getLongest(const vector<string>& data)
+    int getLongest()
     {   
         int longest = 0;for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
@@ -75,9 +75,9 @@ class TextStat
         return longest;
     }
 
-    int getShortest(const vector<string>& data)
+    int getShortest()
     {
-        int shortest = getLongest(data);
+        int shortest = getLongest();
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
         {
             if (shortest > i->length())
@@ -86,7 +86,7 @@ class TextStat
         return shortest;
     }
 
-    void longerThan(const vector<string>& data){
+    void longerThan(){
         int size;
          vector<string> longer;
         cout << "Longer than: ";
@@ -107,7 +107,7 @@ class TextStat
         cout << endl;
     }
 
-    void numUnique(const vector<string>& data)
+    void numUnique()
     {   
         vector<string> unic_one;
         for (vector<string>::const_iterator k = data.begin(); k != data.end(); ++k)
@@ -118,7 +118,8 @@ class TextStat
         unic_one.erase(unique(unic_one.begin(), unic_one.end()), unic_one.end());
         cout << "Unique number of words in the file : " << unic_one.size()<< endl;
     }
-    void mostFrequent(const vector<string>& data){
+
+    void mostFrequent(){
         vector<int> most; vector<string> done;
         int int_most = 0, int_most2 = 0, max_element = 0;
         for (vector<string>::const_iterator i = data.begin(); i != data.end(); ++i)
@@ -172,12 +173,12 @@ main(){
     file.close();
 
 
-    cout << "The shortest word in the file is: " << stat.getShortest(stat.data) << " character short." << endl;
-    cout << "The longest worls in the file is: " << stat.getLongest(stat.data) << " character long" << endl;
-    cout <<  "The sum of the file's words is: " << stat.size(stat.data) << endl;
-    stat.longerThan(stat.data);
-    stat.add(stat.data);
-    stat.print(stat.data);
-    stat.mostFrequent(stat.data);
-    stat.numUnique(stat.data);
+    cout << "The shortest word in the file is: " << stat.getShortest() << " character short." << endl;
+    cout << "The longest worls in the file is: " << stat.getLongest() << " character long" << endl;
+    cout <<  "The sum of the file's words is: " << stat.size() << endl;
+    stat.longerThan();
+    stat.add();
+    stat.print();
+    stat.mostFrequent();
+    stat.numUnique();
 }
