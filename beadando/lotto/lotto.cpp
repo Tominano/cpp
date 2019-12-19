@@ -51,39 +51,47 @@ public:
     
 
 
-void nyeremeny()
-{
-    for(int j = 1; j < numbers.size() - 6; j +=5)
+   void nyeremeny()
+
+    {
+        int coun0 = 0;
+        int coun1 = 0;
+        int coun2 = 0;
+        int coun3 = 0;
+        int coun4 = 0;
+        int coun5 = 0;
+        int counAll = 0;
+
+        for (int k = 0; k < 5; ++k)
         {
-        for(int k = 0; k < 5; ++k)    
-            {   
-                if(num[k] == numbers[j + k])              
-                    ++counAll;        
+            for (int j = 1; j < numbers.size() - 6; j += 5)
+            {
+                if (num[k] == numbers[j + k])
+                    ++counAll;
+            
+            if (counAll == 0)
+            ++coun0;
+            if (counAll == 1)
+            ++coun1;
+            if (counAll == 2)
+            ++coun2;
+            if (counAll == 3)
+            ++coun3;
+            if (counAll == 4)
+            ++coun4;
+            if (counAll == 5)
+            ++coun5;
             }
         }
-        if(counAll == 0)
-            ++coun0;
-        else if(counAll == 1)
-            ++coun1;
-        else if(counAll == 2)
-            ++coun2;
-        else if(counAll == 3)
-            ++coun3;
-        else if(counAll == 4)
-            ++coun4;
-        else if(counAll == 5)
-            ++coun5;
-
-    cout << coun0 << endl;
-    cout << coun1 << endl;
-    cout << coun2 << endl;
-    cout << coun3 << endl;
-    cout << coun4 << endl;
-    cout << coun5 << endl;
 
 
-
-}
+        cout << coun0 << endl;
+        cout << coun1 << endl;
+        cout << coun2 << endl;
+        cout << coun3 << endl;
+        cout << coun4 << endl;
+        cout << coun5 << endl;
+    }
 
 vector<int> lottoNum()
 {
@@ -240,13 +248,7 @@ void mostFrequent(){
         }
         cout << endl;
     }
-
-
-
-
 };
-
-
 
 main()
 {
