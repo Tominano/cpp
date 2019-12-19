@@ -85,12 +85,12 @@ public:
         }
 
 
-        cout << coun0 << endl;
-        cout << coun1 << endl;
-        cout << coun2 << endl;
-        cout << coun3 << endl;
-        cout << coun4 << endl;
-        cout << coun5 << endl;
+        cout << "A tippelt számok " << coun0 << " db NULLA találatos szelvény lett vola az évek alatt." << endl;
+        cout << "A tippelt számok " << coun1 << " db EGY találatos szelvény lett vola az évek alatt." << endl;
+        cout << "A tippelt számok " << coun2 << " db KÉT találatos szelvény lett vola az évek alatt." << endl;
+        cout << "A tippelt számok " << coun3 << " db HÁROM találatos szelvény lett vola az évek alatt." << endl;
+        cout << "A tippelt számok " << coun4 << " db NÉGY találatos szelvény lett vola az évek alatt." << endl;
+        cout << "A tippelt számok " << coun5 << " db ÖT találatos szelvény lett vola az évek alatt." << endl;
     }
 
 vector<int> lottoNum()
