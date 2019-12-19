@@ -63,7 +63,7 @@ public:
         int counAll = 0;
 
         for (int k = 0; k < 5; ++k)
-        {
+        {cout << num[k] << endl;
             for (int j = 1; j < numbers.size() - 6; j += 5)
             {
                 if (num[k] == numbers[j + k])
