@@ -40,39 +40,38 @@ public:
 
     int number;
     int input2;
-
     
-
-
-void nyeremeny()
-
-{   int coun0 = 0;
+    int coun0 = 0;
     int coun1 = 0;
     int coun2 = 0;
     int coun3 = 0;
     int coun4 = 0;
     int coun5 = 0;
     int counAll = 0;
+    
 
-        for(int k = 0; k < 5; ++k)
+
+void nyeremeny()
+{
+    for(int j = 1; j < numbers.size() - 6; j +=5)
         {
-            for(int j = 1; j < numbers.size() - 6; j +=5)
+        for(int k = 0; k < 5; ++k)    
             {   
-                if(num[k] == numbers[j + k]);              
+                if(num[k] == numbers[j + k])              
                     ++counAll;        
             }
         }
-        if(counAll == 0);
+        if(counAll == 0)
             ++coun0;
-        if(counAll == 1);
+        else if(counAll == 1)
             ++coun1;
-        if(counAll == 2);
+        else if(counAll == 2)
             ++coun2;
-        if(counAll == 3);
+        else if(counAll == 3)
             ++coun3;
-        if(counAll == 4);
+        else if(counAll == 4)
             ++coun4;
-        if(counAll == 5);
+        else if(counAll == 5)
             ++coun5;
 
     cout << coun0 << endl;
@@ -112,9 +111,9 @@ void lottoNumPrint()
 int won()
 {   int counter = 0;
     vector<int> print2 = lottoNum();
-    for(vector<int>::iterator i = num.begin(); i!= num.end()-1; ++i)
+    for(vector<int>::iterator i = num.begin(); i!= num.end(); ++i)
     {
-      for(vector<int>::iterator j = print2.begin(); j!= print2.end()-1; ++j)
+      for(vector<int>::iterator j = print2.begin(); j!= print2.end(); ++j)
 
         if(*i == *j)
             ++counter;
@@ -157,16 +156,6 @@ int test()
     vector<int> done2 = rend(lottoNum());
     vector<int> done = rend(num);
 
-        for (vector<int>::iterator i = done2.begin(); i != done2.end() - 1; ++i){
-            if(*i == *next(i))
-            {
-                cout << "A generátor egyforma számokat adott lottószámoknak! Indítsa el újra a programot." << endl;
-                exit(0);
-            }
-
-        }
-
-
         for (vector<int>::iterator i = done.begin(); i != done.end() - 1; ++i){
             if(*i == *next(i))
             {
@@ -175,7 +164,15 @@ int test()
             }
 
         }
-    
+        for (vector<int>::iterator i = done2.begin(); i != done2.end() - 1; ++i){
+            if(*i == *next(i))
+            {
+                cout << "A generátor egyforma számokat adott lottószámoknak! Indítsa el újra a programot." << endl;
+                exit(0);
+            }
+
+        }    
+
     for (vector<int>::iterator i = done.begin(); i != done.end(); ++i)
     {
         if(*i > 90 or *i < 1)
