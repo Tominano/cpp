@@ -70,17 +70,17 @@ public:
                     ++counAll;
             
             if (counAll == 0)
-            ++coun0;
+                ++coun0;
             if (counAll == 1)
-            ++coun1;
+                ++coun1;
             if (counAll == 2)
-            ++coun2;
+                ++coun2;
             if (counAll == 3)
-            ++coun3;
+                ++coun3;
             if (counAll == 4)
-            ++coun4;
+                ++coun4;
             if (counAll == 5)
-            ++coun5;
+                ++coun5;
             }
         }
 
