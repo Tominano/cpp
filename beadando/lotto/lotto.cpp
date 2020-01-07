@@ -49,26 +49,10 @@ public:
     int coun5 = 0;
     int counAll = 0;
     
-
-
-   void nyeremeny()
-
+    void nyeremeny()
     {
-        int coun0 = 0;
-        int coun1 = 0;
-        int coun2 = 0;
-        int coun3 = 0;
-        int coun4 = 0;
-        int coun5 = 0;
-        int counAll = 0;
-
-        for (int k = 0; k < 5; ++k)
-        {cout << num[k] << endl;
-            for (int j = 1; j < numbers.size() - 6; j += 5)
-            {
-                if (num[k] == numbers[j + k])
-                    ++counAll;
-            
+        for (int j = 1; j < numbers.size() - 6; j += 5)
+        {
             if (counAll == 0)
                 ++coun0;
             if (counAll == 1)
@@ -80,9 +64,14 @@ public:
             if (counAll == 4)
                 ++coun4;
             if (counAll == 5)
-                ++coun5;
-            }
-        }
+                ++coun5;   
+            for (int k = 0; k < 5; ++k)
+            {   
+                if (num[k] == numbers[j + k])
+                    ++counAll;
+            }                        
+
+      }
 
 
         cout << "A tippelt számok " << coun0 << " db NULLA találatos szelvény lett vola az évek alatt." << endl;
@@ -97,7 +86,7 @@ vector<int> lottoNum()
 {
     vector<int> randvec;
     
-    srand(time(0));
+    srand(time(NULL));
     
     for( int k = 0; k < 6; ++k )
        randvec.push_back(rand()%(90) + 1);
